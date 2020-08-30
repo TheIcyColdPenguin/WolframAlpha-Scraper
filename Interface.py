@@ -234,7 +234,7 @@ class Ui_MainWindow(object):
 
     def calc(self) :
         self.answer_imgs, self.answer_txt = Scraper.get_page_answers(self.eq)
-        Sracper.save_data(self.answer_imgs, self.answer_txt)
+        Scraper.save_data(self.answer_imgs, self.answer_txt)
         
 
 if __name__ == "__main__":
