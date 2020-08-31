@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from time import sleep
 import Scraper
+from QtThreading import WorkerSignals , Worker
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -108,12 +109,16 @@ class Ui_MainWindow(object):
         self.label_2.setMovie(self.movie)
         self.movie.setSpeed(650)
         self.movie.start()
-        self.eq = self.lineEdit.text().strip()
+        self.threadpool = QtCore.QThreadPool()
+        worker = Worker(self.calc)
+        self.threadpool.start(worker)
 
     def calc(self) :
+        self.eq = self.lineEdit.text().strip()
         self.answer_imgs, self.answer_txt = Scraper.get_page_answers(self.eq)
-        Sracper.save_data(self.answer_imgs, self.answer_txt)
-        
+        Scraper.save_data(self.answer_imgs, self.answer_txt)
+        self.movie.stop()
+        self.label_2.setPixmap(QtGui.QPixmap("WolframAlpha-Scraper/assets/Logo.png"))
 
 if __name__ == "__main__":
     import sys
