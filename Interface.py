@@ -70,7 +70,8 @@ class Ui_MainWindow(object):
         )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.label_2.sizePolicy().hasHeightForWidth())
 
         self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setText("")
