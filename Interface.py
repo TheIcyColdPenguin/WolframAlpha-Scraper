@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from time import sleep
 import Scraper
-from QtThreading import WorkerSignals , Worker
+from QtThreading import Worker
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -65,14 +65,17 @@ class Ui_MainWindow(object):
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(290, 5, 121, 121))
 
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.label_2.sizePolicy().hasHeightForWidth())
 
         self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("WolframAlpha-Scraper/assets/Logo.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("assets/Logo.png"))
         self.label_2.setScaledContents(True)
         self.label_2.setWordWrap(False)
         self.label_2.setIndent(-1)
@@ -81,7 +84,7 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(0, 0, 701, 161))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("WolframAlpha-Scraper/assets/BG.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("assets/BG.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
 
@@ -104,8 +107,8 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Search"))
         self.pushButton_2.setText(_translate("MainWindow", "Results"))
 
-    def startSpin(self) :
-        self.movie = QtGui.QMovie("WolframAlpha-Scraper/assets/Logo_Spinning.gif")
+    def startSpin(self):
+        self.movie = QtGui.QMovie("assets/Logo_Spinning.gif")
         self.label_2.setMovie(self.movie)
         self.movie.setSpeed(650)
         self.movie.start()
@@ -113,15 +116,18 @@ class Ui_MainWindow(object):
         worker = Worker(self.calc)
         self.threadpool.start(worker)
 
-    def calc(self) :
+    def calc(self):
         self.eq = self.lineEdit.text().strip()
         self.answer_imgs, self.answer_txt = Scraper.get_page_answers(self.eq)
-        Scraper.save_data(self.answer_imgs, self.answer_txt)
+        img_name_list = Scraper.save_data(self.answer_imgs, self.answer_txt)
+        Scraper.combine_images(img_name_list)
         self.movie.stop()
-        self.label_2.setPixmap(QtGui.QPixmap("WolframAlpha-Scraper/assets/Logo.png"))
+        self.label_2.setPixmap(QtGui.QPixmap("assets/Logo.png"))
+
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

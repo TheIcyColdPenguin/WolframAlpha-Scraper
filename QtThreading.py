@@ -1,8 +1,6 @@
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-import time
-import traceback, sys
+from PyQt5.QtCore import QObject, pyqtSignal, QRunnable, pyqtSlot
+import traceback
+import sys
 
 
 class WorkerSignals(QObject):
@@ -19,15 +17,15 @@ class Worker(QRunnable):
         self.fn = fn
         self.args = args
         self.kwargs = kwargs
-        self.signals = WorkerSignals()    
+        self.signals = WorkerSignals()
 
-        self.kwargs['progress_callback'] = self.signals.progress        
+        self.kwargs['progress_callback'] = self.signals.progress
 
     @pyqtSlot()
     def run(self):
         try:
             result = self.fn()
-        except:
+        except Exception:
             traceback.print_exc()
             exctype, value = sys.exc_info()[:2]
             self.signals.error.emit((exctype, value, traceback.format_exc()))
