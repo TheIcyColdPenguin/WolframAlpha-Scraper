@@ -65,12 +65,12 @@ def save_data(img_src_list, image_text_list):
         with open(name, "wb") as image_file:
             image_file.write(image_data[i])
 
-    print(f"Images have been saved at ./{data_dir_name}")
+    print(f"Images have been saved at {data_dir_name}")
 
     with open("./result-text-data.txt", "wb") as file:
         file.write("\r\n".join(image_text_list).encode("utf8"))
 
-    print(f"Text data has been saved at ./{data_dir_name}")
+    print(f"Text data has been saved at {data_dir_name}")
     chdir("../")
     return image_names
 
