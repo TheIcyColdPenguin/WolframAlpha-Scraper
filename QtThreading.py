@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QObject, pyqtSignal, QRunnable, pyqtSlot
-import traceback
-import sys
+from traceback import print_exc , format_exc
+from sys import exc_info
 
 
 class WorkerSignals(QObject):
@@ -26,9 +26,9 @@ class Worker(QRunnable):
         try:
             result = self.fn()
         except Exception:
-            traceback.print_exc()
-            exctype, value = sys.exc_info()[:2]
-            self.signals.error.emit((exctype, value, traceback.format_exc()))
+            print_exc()
+            exctype, value = exc_info()[:2]
+            self.signals.error.emit((exctype, value, format_exc()))
         else:
             self.signals.result.emit(result)
         finally:

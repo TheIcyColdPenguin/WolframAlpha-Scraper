@@ -20,7 +20,7 @@ def pasteImgs(main_img, imgs, padding):
 
 
 def combine_images(img_name_list):
-    folder_path = "result-data"
+    folder_path = "./result-data"
     os.chdir(folder_path)
 
     # load images
@@ -34,6 +34,13 @@ def combine_images(img_name_list):
     final_img = createImg(max_width, total_height, padding_y * len(imgs))
     pasteImgs(final_img, imgs, padding_y)
 
-    final_img.save("final-result.png", quality=95, subsampling=0)
+    final_img.save("./final-result.png", quality=95, subsampling=0)
+
+    for img in imgs:
+        img.close()
+
+    for filename in os.listdir():
+        if filename.endswith(".gif") or filename.endswith(".txt"):
+            os.remove(filename)
 
     os.chdir("../")
