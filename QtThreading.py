@@ -1,9 +1,12 @@
+# imports
 from PyQt5.QtCore import QObject, pyqtSignal, QRunnable, pyqtSlot
 from traceback import print_exc, format_exc
 from sys import exc_info
 
 
 class WorkerSignals(QObject):
+    '''
+    '''
     finished = pyqtSignal()
     error = pyqtSignal(tuple)
     result = pyqtSignal(object)
@@ -11,7 +14,13 @@ class WorkerSignals(QObject):
 
 
 class Worker(QRunnable):
+    '''
+    class for Worker thread to fetch the data on a separate thread
+    '''
+
     def __init__(self, fn, *args, **kwargs):
+        # initialise the object
+
         super(Worker, self).__init__()
 
         self.fn = fn
@@ -23,6 +32,8 @@ class Worker(QRunnable):
 
     @pyqtSlot()
     def run(self):
+        # run the required function in a separate thread
+
         try:
             result = self.fn()
         except Exception:
