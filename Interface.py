@@ -1,18 +1,25 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Scraper import get_page_answers , save_data , combine_images
+from Scraper import get_page_answers, save_data, combine_images
 from QtThreading import Worker
 from New_Win import Ui_MainWindow as Ui_Win2
 import os
 
+# constants
+LOGO1_PATH = "./assets/Logo.png"
+LOGO2_PATH = "./assets/Logo.ico"
+BG_PATH = "./assets/BG.png"
+SPINNING_LOGO_GIF = "./assets/Logo_Spinning.gif"
+
+
 class Ui_MainWindow(object):
 
-    def __init__(self , mw) :
+    def __init__(self, mw):
         self.mw = mw
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setFixedSize(700, 284)
-        MainWindow.setWindowIcon(QtGui.QIcon("./Logo.ico"))
+        MainWindow.setWindowIcon(QtGui.QIcon(LOGO2_PATH))
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(255, 170, 127))
         brush.setStyle(QtCore.Qt.SolidPattern)
@@ -66,7 +73,6 @@ class Ui_MainWindow(object):
 
         self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName("pushButton_2")
-        
 
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(290, 5, 121, 121))
@@ -76,11 +82,12 @@ class Ui_MainWindow(object):
         )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.label_2.sizePolicy().hasHeightForWidth())
 
         self.label_2.setSizePolicy(sizePolicy)
         self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("./assets/Logo.png"))
+        self.label_2.setPixmap(QtGui.QPixmap(LOGO1_PATH))
         self.label_2.setScaledContents(True)
         self.label_2.setWordWrap(False)
         self.label_2.setIndent(-1)
@@ -89,7 +96,7 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(0, 0, 701, 161))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("./assets/BG.png"))
+        self.label_3.setPixmap(QtGui.QPixmap(BG_PATH))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
 
@@ -112,8 +119,8 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(_translate("MainWindow", "Results"))
 
     def startSpin(self):
-        if self.lineEdit.text() != "" :
-            self.movie = QtGui.QMovie("./assets/Logo_Spinning.gif")
+        if self.lineEdit.text() != "":
+            self.movie = QtGui.QMovie(SPINNING_LOGO_GIF)
             self.label_2.setMovie(self.movie)
             self.movie.setSpeed(650)
             self.movie.start()
@@ -130,34 +137,36 @@ class Ui_MainWindow(object):
         self.eq = self.lineEdit.text().strip()
         self.answer_imgs, self.answer_txt = get_page_answers(self.eq)
         img_name_list = save_data(self.answer_imgs, self.answer_txt)
-        try :
+        try:
             combine_images(img_name_list)
             self.movie.stop()
-            self.label_2.setPixmap(QtGui.QPixmap("./assets/Logo.png"))
+            self.label_2.setPixmap(QtGui.QPixmap(LOGO1_PATH))
             self.pushButton_2.clicked.connect(lambda: ...)
             self.pushButton.setEnabled(True)
             self.pushButton_2.setEnabled(True)
-        except ValueError :
+        except ValueError:
             self.lineEdit.setText("Your search did not yield any results")
             self.movie.stop()
-            self.label_2.setPixmap(QtGui.QPixmap("./assets/Logo.png"))
-            self.pushButton_2.clicked.connect(lambda : ...)
+            self.label_2.setPixmap(QtGui.QPixmap(LOGO1_PATH))
+            self.pushButton_2.clicked.connect(lambda: ...)
             self.pushButton.setEnabled(True)
             self.pushButton_2.setEnabled(False)
             os.chdir("../")
             os.remove("./result-data/result-text-data.txt")
             os.rmdir("./result-data")
 
-    def results(self) :
+    def results(self):
         from Scraper import getimgsize
         width, height = getimgsize()
         self.win2 = QtWidgets.QMainWindow()
-        self.ui2 = Ui_Win2(self.mw , width , height , self)
+        self.ui2 = Ui_Win2(self.mw, width, height, self)
         self.ui2.setupUi(self.win2)
-        
-        self.ui2.label.setPixmap(QtGui.QPixmap("./result-data/final-result.png"))
+
+        self.ui2.label.setPixmap(QtGui.QPixmap(
+            "./result-data/final-result.png"))
         self.win2.show()
         self.mw.hide()
+
 
 def main():
     import sys
@@ -167,6 +176,7 @@ def main():
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     main()

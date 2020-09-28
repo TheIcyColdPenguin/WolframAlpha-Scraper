@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 
-def createImg(width, height, extra):
+def create_img(width, height, extra):
     return Image.new(
         "RGBA",
         (width, height + extra),
@@ -10,7 +10,7 @@ def createImg(width, height, extra):
     )
 
 
-def pasteImgs(main_img, imgs, padding):
+def paste_imgs(main_img, imgs, padding):
     paste_y = 0
     paste_x = 0
     for img in imgs:
@@ -31,8 +31,8 @@ def combine_images(img_name_list):
     total_height = sum(img.height for img in imgs)
 
     padding_y = 20
-    final_img = createImg(max_width, total_height, padding_y * len(imgs))
-    pasteImgs(final_img, imgs, padding_y)
+    final_img = create_img(max_width, total_height, padding_y * len(imgs))
+    paste_imgs(final_img, imgs, padding_y)
 
     final_img.save("./final-result.png", quality=95, subsampling=0)
 
