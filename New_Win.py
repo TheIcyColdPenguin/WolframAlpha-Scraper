@@ -87,9 +87,7 @@ class Ui_MainWindow(object):
         self.MainWindow.hide()
         self.ogwin.show()
         self.ui.pushButton_2.setEnabled(False)
-        if self.saved:
-            pass
-        else:
+        if not self.saved:
             remove("./result-data/final-result.png")
             rmdir("./result-data")
 
