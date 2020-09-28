@@ -1,11 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from image_combiner import combine_images
+from PIL import Image
 
 
 def get_equation():
     raw_eq = input("Enter any question: ").strip()
-    # clean_eq = quote(raw_eq)
     return raw_eq
 
 
@@ -18,7 +18,8 @@ def get_page_answers(user_input):
     options.add_argument("--diable-gpu")
     options.add_argument("--ignore-certificate-errors")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(
+        executable_path="./chromedriver.exe", options=options)
     driver.get(URL)
 
     # search for input box
@@ -38,16 +39,16 @@ def get_page_answers(user_input):
     return images, text_data
 
 
-def save_data(image_source_list, image_text_list):
+def save_data(img_src_list, image_text_list):
     import requests
     from os import mkdir, chdir
     from shutil import rmtree
 
     image_data = [
-        requests.get(image_source).content for image_source in image_source_list
+        requests.get(image_source).content for image_source in img_src_list
     ]
 
-    data_dir_name = "result-data"
+    data_dir_name = "./result-data"
     try:
         rmtree(data_dir_name)
     except FileNotFoundError:
@@ -57,7 +58,7 @@ def save_data(image_source_list, image_text_list):
         chdir(data_dir_name)
 
     image_names = [
-        f"result-image-{str(i).zfill(3)}.gif" for i in range(len(image_source_list))
+        f"result-image-{str(i).zfill(3)}.gif" for i in range(len(img_src_list))
     ]
 
     for i, name in enumerate(image_names):
@@ -66,7 +67,7 @@ def save_data(image_source_list, image_text_list):
 
     print(f"Images have been saved at ./{data_dir_name}")
 
-    with open("result-text-data.txt", "wb") as file:
+    with open("./result-text-data.txt", "wb") as file:
         file.write("\r\n".join(image_text_list).encode("utf8"))
 
     print(f"Text data has been saved at ./{data_dir_name}")
@@ -79,6 +80,12 @@ def main():
     answer_images, answer_text = get_page_answers(eq)
     img_names = save_data(answer_images, answer_text)
     combine_images(img_names)
+
+
+def getimgsize():
+    img = Image.open("./result-data/final-result.png")
+    width, height = img.size
+    return width, height
 
 
 if __name__ == "__main__":
