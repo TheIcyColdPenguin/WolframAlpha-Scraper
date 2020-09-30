@@ -1,17 +1,18 @@
 # imports
 from PyQt5 import QtCore, QtGui, QtWidgets
-from os import rmdir , remove
+from os import rmdir, remove
+
 
 class Ui_MainWindow(object):
     '''
     A class to handle the Results window.
     Responsible for creating the GUI and running the functionality
     '''
-    def __init__(self , ogwin , width , height , ui) :
+
+    def __init__(self, ogwin, width, height, ui):
         '''
         Initialising the class.
         This is called whenever an object of this class is created.
-
         Parameters:
         ogwin (QtWidgets.QMainWindow): The original main window from where this class was called
         width (int): The width of the window
@@ -28,7 +29,6 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         '''
         Setup the UI. This includes declaring several UI elements such as Buttons, Labels and Images
-
         Parameters:
         MainWindow (QtWidgets.QMainWindow): The main window in which the app is created
         '''
@@ -42,33 +42,33 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowIcon(QtGui.QIcon("./assets/Logo.ico"))
         # Linking the window size to the image size
-        if self.height > 795 :
+        if self.height > 795:
             MainWindow.setFixedSize(self.width + 50, 975)
-        else :
+        else:
             MainWindow.setFixedSize(self.width + 50, self.height + 175)
 
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
 
-        if self.height > 795 :  
+        if self.height > 795:
             self.scrollarea = QtWidgets.QScrollArea(self.centralwidget)
-            self.scrollarea.setGeometry(QtCore.QRect(25 , 25 , self.width, 795))
-        else :
-            pass
+            self.scrollarea.setGeometry(QtCore.QRect(25, 25, self.width, 795))
 
         self.label = QtWidgets.QLabel()
         self.label.setGeometry(QtCore.QRect(25, 25, self.width, self.height))
         self.label.setText("")
-        
+
         self.label.setScaledContents(True)
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
 
-        if self.height > 795 :
-            self.pushButton.setGeometry(QtCore.QRect(25, 845, self.width, 50))
-        else :
-            self.pushButton.setGeometry(QtCore.QRect(25, 50 + self.height, self.width, 50))
+        if self.height > 795:
+            self.pushButton.setGeometry(QtCore.QRect(
+                25, 845, self.width, 50))
+        else:
+            self.pushButton.setGeometry(QtCore.QRect(
+                25, 50 + self.height, self.width, 50))
 
         self.pushButton.clicked.connect(self.back)
         font = QtGui.QFont()
@@ -80,17 +80,19 @@ class Ui_MainWindow(object):
 
         self.pushButton2 = QtWidgets.QPushButton(self.centralwidget)
 
-        if self.height > 795 :
-            self.pushButton2.setGeometry(QtCore.QRect(25, 900, self.width, 50))
-        else :
-            self.pushButton2.setGeometry(QtCore.QRect(25, 100 + self.height, self.width, 50))
+        if self.height > 795:
+            self.pushButton2.setGeometry(QtCore.QRect(
+                25, 900, self.width, 50))
+        else:
+            self.pushButton2.setGeometry(QtCore.QRect(
+                25, 100 + self.height, self.width, 50))
 
         self.pushButton2.setFont(font)
         self.pushButton2.clicked.connect(self.save)
 
-        if self.height > 795 :
+        if self.height > 795:
             self.scrollarea.setWidget(self.label)
-        else :
+        else:
             self.label.setParent(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -99,7 +101,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         '''
         Editing the various UI elements to display the required text and translation
-
         Parameters:
         MainWindow (QtWidgets.QMainWindow): The main window in which the app is created
         '''
@@ -108,8 +109,7 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Back"))
         self.pushButton2.setText(_translate("MainWindow", "Save"))
 
-
-    def back(self) :
+    def back(self):
         '''
         Executed when the back button is pressed.
         It closes down the current window and reopens
@@ -119,13 +119,11 @@ class Ui_MainWindow(object):
         self.MainWindow.hide()
         self.ogwin.show()
         self.ui.pushButton_2.setEnabled(False)
-        if self.saved : # Checking for save
-            pass
-        else : # Removing cache
+        if not self.saved:  # removing cache if not saved
             remove("./result-data/final-result.png")
             rmdir("./result-data")
 
-    def save(self) :
+    def save(self):
         '''
         Saves the folder containing the result-data
         in the current working directory
@@ -133,7 +131,8 @@ class Ui_MainWindow(object):
         self.saved = True
         self.back()
 
-# To avoid the application being fired if imported
+
+# To avoid the application being run if imported
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
