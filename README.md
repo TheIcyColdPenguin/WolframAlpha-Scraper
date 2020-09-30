@@ -8,7 +8,7 @@ It allows you to enter a search term, and it combines all the answers it can fin
 
 <br />
 
-## [Prerequisites](#prerequisites)
+## Prerequisites
 - You will need a working installation of python.
 - The following packages will need to be installed, preferably in a venv(see [Creating a venv](create-a-venv)):
     - PyQt5 (```pip install PyQt5```)
@@ -19,7 +19,7 @@ It allows you to enter a search term, and it combines all the answers it can fin
 
 <br />
 
-## [Creating a venv(Optional)](#create-a-venv(optional)):
+## Creating a venv(Optional)
 - A venv or virtual environment is a tool that can be used to manage all your installed packages.
 - You can create a venv in the terminal by moving to the directory where the project folder is located  
 and using the command ```python -m venv <give-your-venv-a-name-here>```
