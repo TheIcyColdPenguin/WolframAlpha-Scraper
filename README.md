@@ -1,6 +1,6 @@
-# WolframAlpha-Scraper
+# [WolframAlpha-Scraper](#wolfram-scraper)
 
-## Overview
+## [Overview](#overview)
 
 The Wolfram Scraper allows you to create a simple and comprehensive image to answer all your questions.
 
@@ -8,7 +8,26 @@ It allows you to enter a search term, and it combines all the answers it can fin
 
 <br />
 
-## How To Use it
+## [Prerequisites](#prerequisites)
+- You will need a working installation of python.
+- The following packages will need to be installed, preferably in a venv(see [Creating a venv](create-a-venv)):
+    - PyQt5 (```pip install PyQt5```)
+    - requests (```pip install requests```)
+    - selenium (```pip install selenium```)
+    - PIL (```pip install Pillow```)
+    
+
+<br />
+
+## [Creating a venv(Optional)](#create-a-venv(optional)):
+- A venv or virtual environment is a tool that can be used to manage all your installed packages.
+- You can create a venv in the terminal by moving to the directory where the project folder is located  
+and using the command ```python -m venv <give-your-venv-a-name-here>```
+    - Note that depending on your operating system, you might have to replace ```python``` with ```python3```.
+
+<br />
+
+## How To Use
 
 Simply start up the program and enter your search query in the text box and press search.
 <img src="README-assets/pic1.png" /><br />
