@@ -11,11 +11,10 @@ It allows you to enter a search term, and it combines all the answers it can fin
 ## Prerequisites
 - You will need a working installation of python.
 - The following packages will need to be installed, preferably in a venv(see [Creating a venv](./README.md#creating-a-venvoptional)):
-    - PyQt5 (```pip install PyQt5```)
-    - requests (```pip install requests```)
+    - PyQt5 &nbsp;&nbsp;&nbsp;&nbsp;(```pip install PyQt5```)
+    - requests&nbsp;(```pip install requests```)
     - selenium (```pip install selenium```)
-    - PIL (```pip install Pillow```)
-    
+    - PIL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(```pip install Pillow```)
 
 <br />
 
