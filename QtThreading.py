@@ -1,6 +1,6 @@
 # Imports
 from PyQt5.QtCore import QObject, pyqtSignal, QRunnable, pyqtSlot
-from traceback import print_exc , format_exc
+from traceback import print_exc, format_exc
 from sys import exc_info
 
 class WorkerSignals(QObject):
