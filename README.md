@@ -15,6 +15,7 @@ Simply start up the program and enter your search query in the text box and pres
 <img src="README-assets/pic2.png" /><br />
 <p>You will notice that the logo starts spinning, indicating that it is waiting for the data to be fetched</p><br />
 <img src="README-assets/pic4.png" /><br />
-<p>You can also click save to save the image to disk.</p><br />
+<p>CLick on Results to view the compiled image.</p><br />
 <img src="README-assets/pic5.png" /><br />
-<img src="README-assets/pic6.png" /><br />
+<p>You can also click save to save the image to disk.</p><br />
+<img src="README-assets/pic6.png" />
