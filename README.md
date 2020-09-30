@@ -1,6 +1,6 @@
-# [WolframAlpha-Scraper](#wolfram-scraper)
+# WolframAlpha Scraper
 
-## [Overview](#overview)
+## Overview
 
 The Wolfram Scraper allows you to create a simple and comprehensive image to answer all your questions.
 
