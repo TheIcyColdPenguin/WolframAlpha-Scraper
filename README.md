@@ -4,7 +4,7 @@
 
 The Wolfram Scraper allows you to create a simple and comprehensive image to answer all your questions.
 
-It allows you to enter a search term, and it combines all the answers it can find on WolframAlpha ito a single image.
+It prompts you to enter a search term, and it combines all the answers it can find on WolframAlpha into a single image.
 
 <br />
 
@@ -39,7 +39,7 @@ It allows you to enter a search term, and it combines all the answers it can fin
 
     -   On macOS, it is<br />`python3 Interface.py`
 
--   After you are done, you can close the program window and type in the command<br />`deactivate`<br />in the terminal.<br /><img src="./README-assets/cmd_deactivate.png" />
+-   After you are done, you can close the program window and go back to the terminal and type in the command<br />`deactivate`<br /><img src="./README-assets/cmd_deactivate.png" />
 
     <br />
 
