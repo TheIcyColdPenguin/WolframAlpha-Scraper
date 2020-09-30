@@ -47,3 +47,7 @@ Simply start up the program and enter your search query in the text box and pres
 <img src="README-assets/pic5.png" /><br />
 <p>You can also click save to save the image to disk.</p><br />
 <img src="README-assets/pic6.png" />
+
+<br /><br />
+
+#### Note: We are in no way affiliated with Wolfram Research, Inc., or its product, WolframAlpha. This is an experimental project purely for academic purposes. 
