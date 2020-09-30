@@ -1,6 +1,6 @@
 # Imports
 from PyQt5.QtCore import QObject, pyqtSignal, QRunnable, pyqtSlot
-from traceback import print_exc, format_exc
+from traceback import print_exc , format_exc
 from sys import exc_info
 
 class WorkerSignals(QObject):
@@ -22,6 +22,7 @@ class Worker(QRunnable):
         '''
         Initialising the class.
         This is called whenever an object of this class is created.
+
         Parameters:
         fn (function): The function which will be put on a separate thread
         '''
