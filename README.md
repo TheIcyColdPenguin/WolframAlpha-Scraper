@@ -17,7 +17,7 @@ It allows you to enter a search term, and it combines all the answers it can fin
     -   requests
     -   selenium
     -   PIL
--   They can be easily installed by using the command `pip install -r requirements.txt` in the terminal after opening it up in the same folder as the project files.
+-   They can be easily installed by using the command `pip install -r requirements.txt` in the terminal after opening it up in the same folder as the project files.<br /><img src="./README-assets/cmd_installation.png" />
 
 <br />
 
@@ -25,14 +25,16 @@ It allows you to enter a search term, and it combines all the answers it can fin
 
 -   A venv or virtual environment is a tool that can be used to manage all your installed packages.
 -   You can create a venv in the _terminal_. The following screenshots are for Windows users, but macOS users can follow more or less the same instructions with a few slight changes that have been clearly mentioned.
--   Start off by moving to the directory where the project folder is located and using the command `python -m venv give-your-venv-a-name-here`
+-   Start off by moving to the directory where the project folder is located and using the command `python -m venv give-your-venv-a-name-here`<br /><img src="./README-assets/cmd_create_venv.png" />
+
     -   Note that on macOS, you have to replace `python` with `python3`.
     -   Also note that the name you give the venv should not contain any spaces.
--   Then, activate it using the command `your-venv-name\Scripts\activate.bat`
+-   Then, activate it using the command `your-venv-name\Scripts\activate.bat`<br /><img src="./README-assets/cmd_activation.png" />
+
     -   On macOS, the command should be `source your-venv-name/bin/activate`
--   Next, follow the third step of [Prerequisites](./README.md#prerequisites) to install all required packages in the
--   Now you can run the program using the command `python Interface.py` - On macOS, it is `python3 Interface.py`
--   After you are done, you can close the program window and type in the command `deactivate` in the terminal.
+-   Next, follow the fourth step of [Prerequisites](./README.md#prerequisites) to install all required packages in the venv.
+-   Now you can run the program using the command `python Interface.py` - On macOS, it is `python3 Interface.py`<br /><img src="./README-assets/cmd_run.png" />
+-   After you are done, you can close the program window and type in the command `deactivate` in the terminal.<br /><img src="./README-assets/cmd_deactivate.png" />
     <br />
 
 ## How To Use
@@ -50,4 +52,4 @@ Simply start up the program and enter your search query in the text box and pres
 
 <br /><br />
 
-#### Note: We are in no way affiliated with Wolfram Research, Inc., or its product, WolframAlpha. This is an experimental project purely for academic purposes. 
+#### Note: We are in no way affiliated with Wolfram Research, Inc., or its product, WolframAlpha. This is an experimental project purely for academic purposes.
