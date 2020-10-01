@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
         MainWindow.setPalette(palette)
         self.MainWindow = MainWindow
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Results")
         MainWindow.setWindowIcon(QtGui.QIcon("./assets/Logo.ico"))
         # Linking the window size to the image size
         if self.height > 795:
