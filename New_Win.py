@@ -39,7 +39,7 @@ class Ui_MainWindow(object):
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
         MainWindow.setPalette(palette)
         self.MainWindow = MainWindow
-        MainWindow.setObjectName("MainWindow")
+        MainWindow.setObjectName("Results")
         MainWindow.setWindowIcon(QtGui.QIcon("./assets/Logo.ico"))
         # Linking the window size to the image size
         if self.height > 795:
@@ -105,9 +105,9 @@ class Ui_MainWindow(object):
         MainWindow (QtWidgets.QMainWindow): The main window in which the app is created
         '''
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.pushButton.setText(_translate("MainWindow", "Back"))
-        self.pushButton2.setText(_translate("MainWindow", "Save"))
+        MainWindow.setWindowTitle(_translate("Results", "Results"))
+        self.pushButton.setText(_translate("Results", "Back"))
+        self.pushButton2.setText(_translate("Results", "Save"))
 
     def back(self):
         '''
