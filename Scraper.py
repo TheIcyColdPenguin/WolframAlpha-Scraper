@@ -31,7 +31,7 @@ def get_page_answers(user_input):
     options = webdriver.ChromeOptions()
     options.add_argument("--incognito")
     options.add_argument("--headless")
-    options.add_argument("--diable-gpu")
+    options.add_argument("--disable-gpu")
     options.add_argument("--ignore-certificate-errors")
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
     driver = webdriver.Chrome(

@@ -134,7 +134,7 @@ class Ui_MainWindow(object):
     def startSpin(self):
         '''
         Starts the spinning of the app logo
-        and starts threading to keep the 
+        and starts threading to keep the
         GUI and the backend on separate threads.
         Also sends a signal to start the calculation
         '''
